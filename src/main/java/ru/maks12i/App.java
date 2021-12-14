@@ -54,10 +54,7 @@ public class App {
         System.out.println(Arrays.stream(carMakerComp).collect(Collectors.joining(",")));
         //Сортировка производителей
         Map<String, List<Car>> sortMakers =
-                carMakers
-                        .entrySet()
-                        .stream()
-                        .filter(x -> x.getValue().size() > 2)
+                carMakers.entrySet().stream().filter(x -> x.getValue().size() > 2)
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         List<String> keys = sortMakers.keySet().stream().sorted().collect(Collectors.toList());
         fileIO.writeFile(keys, "Sorted_Makers.csv");
